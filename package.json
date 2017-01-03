@@ -1,0 +1,22 @@
+{
+  "name": "homebridge-hyperion-light",
+  "version": "1.0.0",
+  "description": "Hyperion plugin for homebridge: https://github.com/nfarina/homebridge",
+  "license": "ISC",
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "main": "index.js",
+  "author": "Tristan Teufel",
+  "dependencies": {
+    "color": "^1.0.3"
+  }
+}
