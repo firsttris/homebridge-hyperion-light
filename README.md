@@ -27,7 +27,7 @@ Configuration sample:
             "effectName": "Cinema dim lights",
             "host": "20.1.0.138",
             "port": "19444"
-        },
+        }]
 ```
 
 Fields:
