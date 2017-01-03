@@ -3,8 +3,10 @@
 
 Homebridge Plugin to use Hyperion as HomeKit device.
   
-Control TV Blacklight color and brightness..
+Control color and brightness of TV Blacklight.
+
 Switch Ambilight on/off. (optional)
+
 Switch Effect on/off. (optional, you can choose the effect by name)
 
 # Installation
