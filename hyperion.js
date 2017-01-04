@@ -3,8 +3,8 @@
  */
 const net = require('net');
 const color = require('color');
-let host;
-let port;
+let host = "";
+let port = 19444 * 1;
 
 const white = color.rgb(255, 255, 255);
 const red = color.rgb(255, 0, 0);
@@ -42,27 +42,29 @@ const effectCommand = {
 const serverInfo = {"command": "serverinfo"};
 
 function send (command, callback) {
-    var client = new net.Socket();
-    client.connect(port, host, function () {
-        var string = JSON.stringify(command) + "\n";
+    const client = new net.Socket();
+    client.connect(port, host, () => {
+        const string = JSON.stringify(command) + "\n";
         client.write(string);
     });
-    client.on('error', function (err) {
-        console.log('error : ' + err);
+    client.on('error', (err) => {
+        console.log('Hyperion : ' + host + ' error: ' + err);
     });
-    var chunk = "";
-    client.on('data', function (data) {
+    let chunk = "";
+    client.on('data', (data) => {
         chunk += data.toString();
         client.end();
     });
-    client.on('end', function () {
-        //console.log("end" + chunk);
-        var object = JSON.parse(chunk);
+    client.on('end', () => {
+        const object = JSON.parse(chunk);
         if (callback) {
             callback(object);
         }
+        console.log("chunk: "+chunk);
     });
 }
+
+send(serverInfo);
 
 function setColor (colorObject) {
     colorCommand.color = colorObject.rgb().round().array();
@@ -92,7 +94,7 @@ function extractColorFromData (data) {
     }
 }
 function getOn (callback) {
-    send(serverInfo, function (data) {
+    send(serverInfo, (data) => {
         verifyLightState(data);
         verifyOn();
         extractColorFromData(data);
@@ -118,7 +120,7 @@ function setEffectState (value) {
 }
 
 function getEffectState (callback) {
-    send(serverInfo, function (data) {
+    send(serverInfo, (data) => {
         effectState = data.info.activeEffects.length > 0;
         callback(null, effectState);
     });
@@ -129,7 +131,7 @@ function setAmbiState () {
 }
 
 function getAmbiState (callback) {
-    send(serverInfo, function (data) {
+    send(serverInfo, (data) => {
         verifyLightState(data);
         verifyAmbiState();
         callback(null, ambiState);
@@ -142,7 +144,7 @@ function setBrightness (value) {
 }
 
 function getBrightness (callback) {
-    send(serverInfo, function (data) {
+    send(serverInfo, (data) => {
         verifyLightState(data);
         verifyOn();
         extractColorFromData(data);
@@ -156,7 +158,7 @@ function setHue (value) {
 }
 
 function getHue (callback) {
-    send(serverInfo, function (data) {
+    send(serverInfo, (data) => {
         verifyLightState(data);
         verifyOn();
         extractColorFromData(data);
@@ -171,7 +173,7 @@ function setSaturation (value) {
 }
 
 function getSaturation (callback) {
-    send(serverInfo, function (data) {
+    send(serverInfo, (data) => {
         verifyLightState(data);
         verifyOn();
         extractColorFromData(data);
