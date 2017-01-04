@@ -63,8 +63,6 @@ function send (command, callback) {
     });
 }
 
-send(serverInfo);
-
 function setColor (colorObject) {
     colorCommand.color = colorObject.rgb().round().array();
     send(colorCommand);
