@@ -78,11 +78,11 @@ function verifyLightState (data) {
     effectState = data.info.activeEffects.length > 0;
 }
 
-function verifyOn() {
+function verifyOn () {
     lightState = ledState && !effectState;
 }
 
-function verifyAmbiState() {
+function verifyAmbiState () {
     ambiState = !ledState && !effectState;
 }
 
@@ -136,12 +136,12 @@ function getAmbiState (callback) {
     });
 }
 
-function setBrightness(value) {
+function setBrightness (value) {
     selectedColor = selectedColor.value(value);
     setColor(selectedColor);
 }
 
-function getBrightness(callback) {
+function getBrightness (callback) {
     send(serverInfo, function (data) {
         verifyLightState(data);
         verifyOn();
@@ -150,12 +150,12 @@ function getBrightness(callback) {
     });
 }
 
-function setHue(value) {
+function setHue (value) {
     selectedColor = selectedColor.hue(value);
     setColor(selectedColor);
 }
 
-function getHue(callback) {
+function getHue (callback) {
     send(serverInfo, function (data) {
         verifyLightState(data);
         verifyOn();
@@ -165,12 +165,12 @@ function getHue(callback) {
     });
 }
 
-function setSaturation(value) {
+function setSaturation (value) {
     selectedColor = selectedColor.saturationv(value);
     setColor(selectedColor);
 }
 
-function getSaturation(callback) {
+function getSaturation (callback) {
     send(serverInfo, function (data) {
         verifyLightState(data);
         verifyOn();
@@ -180,4 +180,20 @@ function getSaturation(callback) {
     });
 }
 
-module.exports = {setHost, setPort, setAmbiState, getAmbiState, setEffectState, getEffectState, setOn, getOn, setOff, setBrightness, getBrightness, setHue, getHue, setSaturation, getSaturation};
+module.exports = {
+    setHost,
+    setPort,
+    setAmbiState,
+    getAmbiState,
+    setEffectState,
+    getEffectState,
+    setOn,
+    getOn,
+    setOff,
+    setBrightness,
+    getBrightness,
+    setHue,
+    getHue,
+    setSaturation,
+    getSaturation
+};
