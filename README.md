@@ -36,5 +36,5 @@ Fields:
 * "name": Name of TV Backlight (required)
 * "ambilightName": Name of switch for Ambilight (optional)
 * "effectName": Name of switch for Effect (optional)
-* "host": The hostname or ip of the machine running Hyperion (required)
-* "port": The port that Hyperion is using (usually 19444) (required)
+* "host": The hostname or ip (required)
+* "port": The port (usually 19444) (required)
