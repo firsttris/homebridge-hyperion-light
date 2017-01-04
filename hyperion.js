@@ -60,7 +60,6 @@ function send (command, callback) {
         if (callback) {
             callback(object);
         }
-        console.log("chunk: "+chunk);
     });
 }
 
