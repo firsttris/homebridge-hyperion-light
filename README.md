@@ -1,4 +1,4 @@
-# homebridge-hyperion
+# homebridge-hyperion-light
 [Homebridge](https://github.com/nfarina/homebridge) accessory plugin for Hyperion
 
 Homebridge Plugin to use Hyperion as HomeKit device.
