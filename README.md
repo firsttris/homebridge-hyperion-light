@@ -11,9 +11,20 @@ Switch Effect on/off. (optional, you can choose the effect by name)
 
 # Installation
 
-1. Install homebridge using: npm install -g homebridge
-2. Install this plugin using: npm install -g homebridge-hyperion-light
-3. Add Accessory (JSON) to your config.json See below for a sample.
+1. [Homebridge](https://github.com/nfarina/homebridge) is required to use this plugin 
+
+[![npm version](https://badge.fury.io/js/homebridge.svg)](https://badge.fury.io/js/homebridge)
+```
+npm install -g homebridge
+```
+2. Install this plugin 
+
+[![npm version](https://badge.fury.io/js/homebridge-hyperion-light.svg)](https://badge.fury.io/js/homebridge-hyperion-light)
+```
+npm install -g homebridge-hyperion-light
+```
+3. Add your Accessory to the config.json (See configuration sample below.)
+
 
 # Configuration
 
