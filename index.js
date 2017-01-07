@@ -84,7 +84,7 @@ HyperionAccessory.prototype.getServices = function () {
             hyperion.getSaturation(callback);
         });
 
-    if (this.ambilightName !== null && this.ambilightName.length > 0) {
+    if (this.ambilightName && this.ambilightName.length > 0) {
         this.ambilightService
             .getCharacteristic(Characteristic.On)
             .on('set', (value, callback) => {
@@ -103,7 +103,7 @@ HyperionAccessory.prototype.getServices = function () {
         services.push(this.ambilightService);
     }
 
-    if (this.effectName !== null && this.effectName.length > 0) {
+    if (this.effectName && this.effectName.length > 0) {
         this.effectService
             .getCharacteristic(Characteristic.On)
             .on('set', (value, callback) => {
