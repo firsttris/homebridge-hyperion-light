@@ -73,8 +73,14 @@ function setOn () {
 }
 
 function verifyLightState (data) {
-    ledState = data.info.activeLedColor.length > 0;
-    effectState = data.info.activeEffects.length > 0;
+    console.log();
+    console.log("Hyperion Response: "+JSON.stringify(data));
+    if(data.info.activeLedColor) {
+        ledState = data.info.activeLedColor.length > 0;
+    }
+    if(data.info.activeEffects) {
+        effectState = data.info.activeEffects.length > 0;
+    }
 }
 
 function verifyOn () {
