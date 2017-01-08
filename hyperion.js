@@ -73,14 +73,13 @@ function setOn () {
 }
 
 function verifyLightState (data) {
-    console.log();
-    console.log("Hyperion Response: "+JSON.stringify(data));
-    if(data.info.activeLedColor) {
-        ledState = data.info.activeLedColor.length > 0;
+    if(!data.info.activeLedColor || !data.info.activeEffects) {
+        console.log("Could not get activeLedColor or activeEffects of Hyperion. Install latest Hyperion Version.");
+        console.log("Check Response: "+JSON.stringify(data));
+        return;
     }
-    if(data.info.activeEffects) {
-        effectState = data.info.activeEffects.length > 0;
-    }
+    ledState = data.info.activeLedColor.length > 0;
+    effectState = data.info.activeEffects.length > 0;
 }
 
 function verifyOn () {
