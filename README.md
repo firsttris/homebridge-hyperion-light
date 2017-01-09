@@ -3,10 +3,9 @@
 
 ###Features
 
-- Control color and brightness of tv backlight.
-
-- Switch ambilight on/off. (optional)
-
+- Switch on/off
+- Control color and brightness of tv backlight
+- Switch ambilight on/off (optional)
 - Get current state/color
 
 ###Installation
