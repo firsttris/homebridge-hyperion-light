@@ -12,12 +12,14 @@ module.exports = function (homebridge) {
 };
 
 function HyperionAccessory (log, config) {
+    if (!config["host"] || !config["port"] || !config["name"]) {
+        log.error("Please define name and host in config.json");
+    }
     this.autoUpdate = config["autoupdate"] != null;
-    this.npmAutoUpdate = new NpmAutoUpdate(log);
-    this.verifyUpdate();
-    this.verifyConfig();
-    this.hyperion = new Hyperion(config["host"], config["port"]);
     this.name = config["name"];
+    this.npmAutoUpdate = new NpmAutoUpdate(log);
+    if(this.autoUpdate) this.verifyUpdate();
+    this.hyperion = new Hyperion(config["host"], config["port"]);
     this.UUID = UUIDGen.generate(this.name);
     this.ambilightName = config["ambilightName"];
     this.lightService = new Service.Lightbulb(this.name);
@@ -27,17 +29,11 @@ function HyperionAccessory (log, config) {
 
 HyperionAccessory.prototype.verifyUpdate = function () {
     this.npmAutoUpdate.checkForUpdate((error, result) => {
-        if (result && this.autoUpdate) {
+        if (result) {
             this.npmAutoUpdate.updatePackage((error, result) => {
             });
         }
     });
-};
-
-HyperionAccessory.prototype.verifyConfig = function () {
-    if (!this.host || !this.name || !this.port) {
-        console.error("Please define name and host in config.json");
-    }
 };
 
 HyperionAccessory.prototype.getServices = function () {

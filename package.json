@@ -1,6 +1,6 @@
 {
   "name": "homebridge-hyperion-light",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Homebridge plugin to use Hyperion as HomeKit accessory",
   "license": "ISC",
   "repository": {
@@ -21,7 +21,7 @@
   "author": "Tristan Teufel",
   "dependencies": {
     "hyperion-js-api": "^1.0.3",
-    "npm-auto-update": "^1.1.0"
+    "npm-auto-update": "^1.1.3"
   },
   "bugs": {
     "url": "https://github.com/firsttris/homebridge-hyperion-light/issues"
