@@ -1,6 +1,7 @@
 "use strict";
 const net = require('net');
 const Hyperion = require('hyperion-js-api');
+const NpmAutoUpdate = require('npm-auto-update');
 let Service, Characteristic, UUIDGen;
 
 module.exports = function (homebridge) {
@@ -11,7 +12,10 @@ module.exports = function (homebridge) {
 };
 
 function HyperionAccessory (log, config) {
-    this.log = log;
+    this.autoUpdate = config["autoupdate"]!=null;
+    this.npmAutoUpdate = new NpmAutoUpdate(log);
+    this.updatePackage();
+    this.verifyConfig();
     this.hyperion = new Hyperion(config["host"], config["port"]);
     this.name = config["name"];
     this.UUID = UUIDGen.generate(this.name);
@@ -21,8 +25,25 @@ function HyperionAccessory (log, config) {
     this.ambilightService = new Service.Switch(this.ambilightName);
     this.ambilightService.subtype = this.ambilightName;
     this.infoService = new Service.AccessoryInformation();
-    this.log("Starting Hyperion Accessory");
 }
+
+HyperionAccessory.prototype.updatePackage = function () {
+    if(this.autoUpdate) {
+        this.npmAutoUpdate.checkForUpdate((error, result) => {
+            if(result) {
+                this.npmAutoUpdate.updatePackage((error, result) => {
+                });
+            }
+        });
+    }
+};
+
+HyperionAccessory.prototype.verifyConfig = function () {
+    if(!this.host || !this.name) {
+        console.error("Please define name and host in config.json");
+        this.name = "Undefined";
+    }
+};
 
 HyperionAccessory.prototype.getServices = function () {
     let services = [];

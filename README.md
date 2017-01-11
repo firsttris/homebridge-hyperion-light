@@ -28,6 +28,7 @@ Configuration sample:
  ```
         "accessories": [{
             "accessory": "Hyperion",
+            "autoupdate": "true",
             "name": "TV Backlight",
             "ambilightName": "TV Ambilight",
             "host": "20.1.0.138",
@@ -38,6 +39,7 @@ Configuration sample:
 Attributes:
 
 - "accessory": Name of Accessory "Hyperion" (required)
+- "autoupdate": Autoupdate this package from NPM (optional, only for one device!)
 - "name": Name of TV Backlight (required)
 - "ambilightName": Name of switch for Ambilight (optional)
 - "host": The hostname or ip (required)
