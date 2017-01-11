@@ -12,9 +12,9 @@ module.exports = function (homebridge) {
 };
 
 function HyperionAccessory (log, config) {
-    this.autoUpdate = config["autoupdate"]!=null;
+    this.autoUpdate = config["autoupdate"] != null;
     this.npmAutoUpdate = new NpmAutoUpdate(log);
-    this.updatePackage();
+    this.verifyUpdate();
     this.verifyConfig();
     this.hyperion = new Hyperion(config["host"], config["port"]);
     this.name = config["name"];
@@ -22,26 +22,21 @@ function HyperionAccessory (log, config) {
     this.ambilightName = config["ambilightName"];
     this.lightService = new Service.Lightbulb(this.name);
     this.lightService.subtype = this.name;
-    this.ambilightService = new Service.Switch(this.ambilightName);
-    this.ambilightService.subtype = this.ambilightName;
     this.infoService = new Service.AccessoryInformation();
 }
 
-HyperionAccessory.prototype.updatePackage = function () {
-    if(this.autoUpdate) {
-        this.npmAutoUpdate.checkForUpdate((error, result) => {
-            if(result) {
-                this.npmAutoUpdate.updatePackage((error, result) => {
-                });
-            }
-        });
-    }
+HyperionAccessory.prototype.verifyUpdate = function () {
+    this.npmAutoUpdate.checkForUpdate((error, result) => {
+        if (result && this.autoUpdate) {
+            this.npmAutoUpdate.updatePackage((error, result) => {
+            });
+        }
+    });
 };
 
 HyperionAccessory.prototype.verifyConfig = function () {
-    if(!this.host || !this.name) {
+    if (!this.host || !this.name || !this.port) {
         console.error("Please define name and host in config.json");
-        this.name = "Undefined";
     }
 };
 
@@ -90,6 +85,10 @@ HyperionAccessory.prototype.getServices = function () {
         });
 
     if (this.ambilightName && this.ambilightName.length > 0) {
+
+        this.ambilightService = new Service.Switch(this.ambilightName);
+        this.ambilightService.subtype = this.ambilightName;
+
         this.ambilightService
             .getCharacteristic(Characteristic.On)
             .on('set', (value, callback) => {
