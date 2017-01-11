@@ -1,3 +1,4 @@
+"use strict";
 const net = require('net');
 const Hyperion = require('hyperion-js-api');
 let Service, Characteristic, UUIDGen;
