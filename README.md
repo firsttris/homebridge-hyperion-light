@@ -1,14 +1,14 @@
 # homebridge-hyperion-light
 :collision: [Homebridge](https://github.com/nfarina/homebridge) plugin to use Hyperion as HomeKit accessory
 
-###Features
+### Features
 
 - Switch on/off
 - Control color and brightness of tv backlight
 - Switch ambilight on/off (optional)
 - Get current state/color
 
-###Installation
+### Installation
 
 [Homebridge](https://github.com/nfarina/homebridge) is required
 
