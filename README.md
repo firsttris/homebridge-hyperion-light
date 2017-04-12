@@ -1,14 +1,14 @@
 # homebridge-hyperion-light
 :collision: [Homebridge](https://github.com/nfarina/homebridge) plugin to use Hyperion as HomeKit accessory
 
-### Features
+## Features
 
 - Switch on/off
 - Control color and brightness of tv backlight
 - Switch ambilight on/off (optional)
 - Get current state/color
 
-### Installation
+## Install
 
 [Homebridge](https://github.com/nfarina/homebridge) is required
 
@@ -44,3 +44,6 @@ Attributes:
 - "ambilightName": Name of switch for Ambilight (optional)
 - "host": The hostname or ip (required)
 - "port": The port (usually 19444) (required)
+
+## License
+[MIT](http://opensource.org/licenses/MIT)
