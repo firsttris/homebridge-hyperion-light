@@ -46,4 +46,4 @@ Attributes:
 - "port": The port (usually 19444) (required)
 
 ## License
-[MIT](http://opensource.org/licenses/MIT)
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
